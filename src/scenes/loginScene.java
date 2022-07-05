@@ -1,6 +1,6 @@
 package scenes;
 
-import javafx.application.*;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -8,14 +8,10 @@ import javafx.stage.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.event.*;
 
-public class loginScene extends Application {
-	public static void main(String[] args) {
-		launch(args);
-	}
-
-	public void start(Stage myStage) throws Exception {
+public class loginScene{
+	public Scene loadScene(final Stage myStage) {
 		//scene1 login
 		RadioButton Student = new RadioButton("Student");
 		RadioButton Teacher = new RadioButton("Teacher");
@@ -40,7 +36,7 @@ public class loginScene extends Application {
 		
 		Button submit = new Button("Submit");
 		
-		myStage.setTitle("VegaBunk");
+		
 		GridPane node1 = new GridPane();
 		
 		node1.setPadding(new Insets(10, 10, 10, 10)); 
@@ -59,45 +55,15 @@ public class loginScene extends Application {
 		node1.add(passwordInput, 1,3);
 		node1.add(submit,1,4);
 		Scene login = new Scene(node1, 1200, 700);
-		//myStage.setScene(login);
 		
-		//scene2 student
-		Image sphoto = new Image("img\\cs013.jpg");
-		ImageView sView = new ImageView(sphoto);
-		Label name = new Label("NAME");
-		Label sem = new Label("SEM-DEPT");
-		Label subjectName;
+		submit.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent ae) {
+				homepage h = new homepage();
+				Scene loginNext = h.loadScene();
+				myStage.setScene(loginNext);
+			}
+		});	
 		
-		String subjects[] = {"MATHS", "OS", "DBMS", "DAA", "JAVA","WEB"};
-		sView.setFitHeight(100);
-		sView.setFitWidth(100);
-		GridPane node2 = new GridPane();
-		node2.setGridLinesVisible(true);
-	
-		node2.setPadding(new Insets(10, 10, 10, 10)); 
-		//node2.setVgap(10); 
-//		node2.setHgap(10);       
-		
-		node2.add(sView,0,0,3,4);
-		node2.add(name,4,2);
-		node2.add(sem,4,3);
-		
-		node2.add(new Label("Subjects"), 0, 5,3,3);
-		node2.add(new Label("Attendance"), 2, 5,3,3);
-		node2.add(new Label("CIE"), 3, 5,3,3);
-		for(int i=0; i<6;i++) {
-			subjectName = new Label(subjects[i]);
-			
-			node2.add(subjectName, 0, 3 + 3*i);
-			
-		}
-		
-		Scene loginNext = new Scene(node2,1200,700);
-		
-		myStage.setScene(loginNext);
-		submit.setOnAction(e -> myStage.setScene(loginNext));	
-
-		
-		myStage.show();
+		return login;
 	}
 }
