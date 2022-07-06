@@ -1,5 +1,8 @@
 package scenes;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -10,7 +13,8 @@ import javafx.scene.image.ImageView;
 public class homepage{
 	public Scene loadScene() {
 		//scene2 student
-		Image sphoto = new Image("img\\cs013.jpg");
+		Path imgPath = Paths.get("img", "cs013.jpg");
+		Image sphoto = new Image(imgPath.toString());
 		ImageView sView = new ImageView(sphoto);
 		Label name = new Label("NAME");
 		Label sem = new Label("SEM-DEPT");

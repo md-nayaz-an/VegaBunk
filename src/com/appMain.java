@@ -6,9 +6,11 @@ import javafx.scene.*;
 import javafx.stage.*;
 
 import scenes.loginScene;
+import db.scripts.*;
 
-public class main extends Application {
+public class appMain extends Application {
 	public static void main(String[] args) {
+		new init().connectDB();
 		launch(args);
 	}
 

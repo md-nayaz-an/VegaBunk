@@ -8,6 +8,10 @@ import javafx.stage.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javafx.event.*;
 
 public class loginScene{
@@ -26,7 +30,8 @@ public class loginScene{
 		TextField userInput = new TextField();
 		TextField passwordInput = new TextField();
 				
-		Image logo = new Image("img\\logo.jpg");
+		Path imgPath = Paths.get("img","logo.jpg");
+		Image logo = new Image(imgPath.toString());
 		BackgroundImage logoview = new BackgroundImage(logo,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
