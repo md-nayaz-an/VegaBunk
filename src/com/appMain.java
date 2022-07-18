@@ -6,7 +6,8 @@ import javafx.scene.*;
 import javafx.stage.*;
 
 import scenes.loginScene;
-import db.scripts.*;
+import db.init;
+import db.*;
 
 public class appMain extends Application {
 	public static void main(String[] args) {
